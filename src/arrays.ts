@@ -5,7 +5,9 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    let newArr: number[] = numbers.splice(1, numbers.length - 2)
+    let otherArr: number[] = [...numbers, numbers[0]]
+    return (numbers.length > 1) ? newArr : otherArr;
 }
 
 /**
@@ -13,7 +15,7 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    return numbers.map((eachNum: number): number => eachNum*3);
 }
 
 /**
@@ -21,7 +23,9 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    let intArr: number[] = [];
+    numbers.map((eachString: string): number => (parseInt(eachString) ? intArr.push(parseInt(eachString)) : intArr.push(0)));
+    return intArr;
 }
 
 /**
