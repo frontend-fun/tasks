@@ -8,7 +8,7 @@ function App(): React.JSX.Element {
             <h1>
                 <span
                     style={{
-                        color: "red",
+                        backgroundColor: "red",
                         border: "1px solid red",
                         padding: "4px",
                     }}
