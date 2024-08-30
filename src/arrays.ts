@@ -51,9 +51,14 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    const newList: string[] = messages.map((eachWord : string): string => eachWord.toUpperCase());
+    const newList: string[] = messages.map((eachWord: string): string =>
+        eachWord.toUpperCase(),
+    );
 
-    return newList.filter((eachWord : string): boolean => eachWord.charAt(eachWord.length - 1) === "!");
+    return newList.filter(
+        (eachWord: string): boolean =>
+            eachWord.charAt(eachWord.length - 1) === "!",
+    );
 };
 
 /**
@@ -61,7 +66,9 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    const newArr: string[] = words.filter((eachWord: string): boolean => eachWord.length < 4);
+    const newArr: string[] = words.filter(
+        (eachWord: string): boolean => eachWord.length < 4,
+    );
     return newArr.length;
 }
 
@@ -71,8 +78,13 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    if (colors.length > 0){
-        return colors.every((eachColor: string): boolean => eachColor === "red" || eachColor === "blue" || eachColor === "green")
+    if (colors.length > 0) {
+        return colors.every(
+            (eachColor: string): boolean =>
+                eachColor === "red" ||
+                eachColor === "blue" ||
+                eachColor === "green",
+        );
     } else {
         return false;
     }
@@ -86,14 +98,21 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    if (addends.length == 1){
-        const strRep = addends.map((num: number): string => num.toString() + "=" + num.toString());
+    if (addends.length == 1) {
+        const strRep = addends.map(
+            (num: number): string => num.toString() + "=" + num.toString(),
+        );
         return strRep.toString();
     }
 
-    const sum = addends.reduce((currentTotal: number, eachNum: number) => currentTotal+eachNum, 0);
+    const sum = addends.reduce(
+        (currentTotal: number, eachNum: number) => currentTotal + eachNum,
+        0,
+    );
 
-    const stringRep = addends.map((eachNum: number): string => eachNum.toString() + "+");
+    const stringRep = addends.map(
+        (eachNum: number): string => eachNum.toString() + "+",
+    );
     return sum.toString() + stringRep.toString();
 }
 
