@@ -24,16 +24,16 @@ function App(): React.JSX.Element {
                 <div className="App">
                     <header className="App-header">
                         <Container>
-                             <Row>
+                            <Row>
                                 <Col>
-                        UD CISC275 with React Hooks and TypeScript ZhihuaSun HHH
-                        Hello World
-                        </Col>
-                        <Col>
-                        Second prat
-                        </Col>
-                    </Row>
-                    </Container>
+                                    UD CISC275 with React Hooks and TypeScript
+                                    ZhihuaSun HHH Hello World
+                                </Col>
+                                <Col>
+                                    Second prat
+                                </Col>
+                            </Row>
+                        </Container>
                     </header>
                     <p>
                         Edit <code>src/App.tsx</code> and save. This page will
