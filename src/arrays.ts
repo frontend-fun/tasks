@@ -5,9 +5,19 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    const newArr: number[] = numbers.splice(1, numbers.length - 2);
-    const otherArr: number[] = [...numbers, numbers[0]];
-    return numbers.length > 1 ? newArr : otherArr;
+    const [first, last] = [0, -1].map((i) => numbers.at(i));
+    const newArr: number[] = [];
+
+    if (numbers.length === 1) {
+        newArr.push(first as number);
+        newArr.push(last as number);
+    } else if (numbers.length > 1) {
+        newArr.push(first as number);
+        newArr.push(last as number);
+    } else {
+        return newArr;
+    }
+    return newArr;
 }
 
 /**
@@ -15,7 +25,10 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers.map((eachNum: number): number => eachNum * 3);
+    const newArr: number[] = numbers.map(
+        (eachNum: number): number => eachNum * 3,
+    );
+    return newArr;
 }
 
 /**
@@ -42,7 +55,11 @@ export function stringsToIntegers(numbers: string[]): number[] {
 export const removeDollars = (amounts: string[]): number[] => {
     const newArr: string[] = [...amounts];
     newArr.map((eachString: string): string => eachString.replaceAll("$", ""));
-    return [];
+    const asInt: number[] = newArr.map((eachString: string): number =>
+        parseInt(eachString),
+    );
+    const filtered: number[] = asInt.filter((value) => !Number.isNaN(value));
+    return filtered;
 };
 
 /**
