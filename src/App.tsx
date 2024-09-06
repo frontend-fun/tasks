@@ -31,7 +31,7 @@ export function App(): React.JSX.Element {
                             <li>Xenoblade Chronicles 1: Definitive Edition</li>
                             <li>DLC - Futures Connected</li>
                             <li>Xenoblade Chronicles 2</li>
-                            <li>DLC - Torna: The Golden Country</li>
+                            <li>DLC - Torna: Golden Country</li>
                             <li>Xenoblade Chronicles 3</li>
                             <li>DLC - Futures Redeemed</li>
                         </ul>
