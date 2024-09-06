@@ -4,7 +4,9 @@
  *      C = (F - 32) * 5/9
  */
 export function fahrenheitToCelius(temperature: number): number {
-    return 0;
+    temperature -= 32;
+    temperature *= 5 / 9;
+    return temperature;
 }
 
 /**
@@ -12,7 +14,17 @@ export function fahrenheitToCelius(temperature: number): number {
  * if the number is greater than zero.
  */
 export function add3(first: number, second: number, third: number): number {
-    return 0;
+    let goal: number = 0;
+    if (first > 0) {
+        goal += first;
+    }
+    if (second > 0) {
+        goal += second;
+    }
+    if (third > 0) {
+        goal += third;
+    }
+    return goal;
 }
 
 /**
@@ -20,7 +32,7 @@ export function add3(first: number, second: number, third: number): number {
  * mark added to the end.
  */
 export function shout(message: string): string {
-    return "";
+    return message.toUpperCase() + "!";
 }
 
 /**
@@ -28,7 +40,7 @@ export function shout(message: string): string {
  * mark. Do not use an `if` statement in solving this question.
  */
 export function isQuestion(message: string): boolean {
-    return true;
+    return message[message.length - 1] === "?";
 }
 
 /**
@@ -37,5 +49,11 @@ export function isQuestion(message: string): boolean {
  * upper or lower case), then return `false`. Otherwise, return `null`.
  */
 export function convertYesNo(word: string): boolean | null {
-    return true;
+    if (word.toUpperCase() === "YES") {
+        return true;
+    } else if (word.toUpperCase() == "NO") {
+        return false;
+    } else {
+        return null;
+    }
 }
