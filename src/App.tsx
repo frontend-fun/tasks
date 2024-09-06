@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import "./assets/images/tiger-blep.png";
+import tiger from "./assets/images/tiger-blep.png";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 export function App(): React.JSX.Element {
     return (
@@ -12,16 +13,19 @@ export function App(): React.JSX.Element {
                 I can make more than one header! Mwhahaha
             </h1>
             <p> </p>
+            <p>Name: Jared Murray</p>
             <Container>
                 <Row>
                     <Col>
-                        <p>Name: Jared Murray</p>
                         <img
-                            src="../assets/images/tiger-blep.png"
-                            alt="It me"
-                        ></img>
+                            src={tiger}
+                            alt="Picture of a Tiger blepping"
+                            className="tigerImg"
+                        />
+                        <p> It me! </p>
+                        <div className="col1Rect"></div>
                     </Col>
-                    <Col>
+                    <Col className="xenoList">
                         <p>List of Xenoblade games I have played:</p>
                         <ul>
                             <li>Xenoblade Chronicles 1: Definitive Edition</li>
@@ -31,6 +35,7 @@ export function App(): React.JSX.Element {
                             <li>Xenoblade Chronicles 3</li>
                             <li>DLC - Futures Redeemed</li>
                         </ul>
+                        <div className="col2Rect"></div>
                     </Col>
                 </Row>
             </Container>

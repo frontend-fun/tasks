@@ -41,6 +41,28 @@
     color: #61dafb;
 }
 
+.tigerImg {
+    width: 50%;
+    height: 75%;
+}
+
+.col1Rect {
+    background-color: red;
+    color: red;
+    width: auto;
+    height: 50px;
+}
+
+.col2Rect {
+    background-color: rgb(255, 0, 0);
+    width: auto;
+    height: 315px;
+}
+
+.xenoList {
+    text-align: left;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
