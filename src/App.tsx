@@ -8,6 +8,7 @@ function App(): React.JSX.Element {
         <div className="App">
             <header className="App-header">
                 Shukria Muhammadi
+                <h2>Header</h2>
                 <img src={AI_picture} alt="A picture form an AI. " />
                 <ol>
                     <li>Great</li>
@@ -46,7 +47,7 @@ function App(): React.JSX.Element {
                     </Row>
                 </Container>
             </header>
-            <h2>Header</h2>
+
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
