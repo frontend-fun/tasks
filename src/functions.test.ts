@@ -1,6 +1,6 @@
 import {
     add3,
-    fahrenheitToCelius,
+    fahrenheitToCelsius,
     shout,
     isQuestion,
     convertYesNo,
@@ -8,13 +8,13 @@ import {
 
 describe("Testing the basic functions", () => {
     test("(3 pts) Testing the fahrenheitToCelius function", () => {
-        expect(fahrenheitToCelius(32)).toBe(0);
-        expect(fahrenheitToCelius(-40)).toBe(-40);
-        expect(fahrenheitToCelius(-22)).toBe(-30);
-        expect(fahrenheitToCelius(14)).toBe(-10);
-        expect(fahrenheitToCelius(68)).toBe(20);
-        expect(fahrenheitToCelius(86)).toBe(30);
-        expect(fahrenheitToCelius(212)).toBe(100);
+        expect(fahrenheitToCelsius(32)).toBe(0);
+        expect(fahrenheitToCelsius(-40)).toBe(-40);
+        expect(fahrenheitToCelsius(-22)).toBe(-30);
+        expect(fahrenheitToCelsius(14)).toBe(-10);
+        expect(fahrenheitToCelsius(68)).toBe(20);
+        expect(fahrenheitToCelsius(86)).toBe(30);
+        expect(fahrenheitToCelsius(212)).toBe(100);
     });
 
     test("(3 pts) Testing the add3 function", () => {
