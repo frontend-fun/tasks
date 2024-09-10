@@ -23,7 +23,12 @@ export function App(): React.JSX.Element {
                             className="tigerImg"
                         />
                         <p> It me! </p>
-                        <div className="col1Rect"></div>
+                        <div
+                            className="col1Rect"
+                            style={{
+                                backgroundColor: "red",
+                            }}
+                        ></div>
                     </Col>
                     <Col className="xenoList">
                         <p>List of Xenoblade games I have played:</p>
@@ -35,7 +40,12 @@ export function App(): React.JSX.Element {
                             <li>Xenoblade Chronicles 3</li>
                             <li>DLC - Futures Redeemed</li>
                         </ul>
-                        <div className="col2Rect"></div>
+                        <div
+                            className="col2Rect"
+                            style={{
+                                backgroundColor: "red",
+                            }}
+                        ></div>
                     </Col>
                 </Row>
             </Container>
