@@ -5,7 +5,11 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    if (numbers.length === 0) {
+        return [];
+    }
+    let goal: number[] = [numbers[0], numbers[numbers.length - 1]];
+    return goal;
 }
 
 /**
@@ -13,7 +17,8 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    let goal: number[] = numbers.map((x: number): number => x * 3);
+    return goal;
 }
 
 /**
@@ -21,7 +26,11 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    let goal: number[] = numbers.map((dupe: string): number => {
+        let goal = Number(dupe);
+        return isNaN(goal) ? 0 : goal;
+    });
+    return goal;
 }
 
 /**
@@ -32,7 +41,12 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    let goal: number[] = amounts.map((dupe: string): number => {
+        let temp = dupe[0] === "$" ? dupe.slice(1) : dupe;
+        let goal = parseInt(temp, 10);
+        return isNaN(goal) ? 0 : goal;
+    });
+    return goal;
 };
 
 /**
@@ -41,7 +55,17 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    let goal: string[] = messages.map((dupe: string): string => {
+        if (dupe[dupe.length - 1] === "!") {
+            return dupe.toUpperCase();
+        } else {
+            return dupe;
+        }
+    });
+    goal = goal.filter(
+        (dupe: string): boolean => dupe[dupe.length - 1] !== "?",
+    );
+    return goal;
 };
 
 /**
@@ -49,7 +73,10 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    let goal: string[] = words.filter(
+        (dupe: string): boolean => dupe.length < 4,
+    );
+    return goal.length;
 }
 
 /**
@@ -58,7 +85,19 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    let goal = false;
+    if (colors.length === 0) {
+        return true;
+    }
+    if (
+        colors.every(
+            (dupe: string): boolean =>
+                dupe === "red" || dupe === "green" || dupe === "blue",
+        )
+    ) {
+        goal = true;
+    }
+    return goal;
 }
 
 /**
@@ -69,7 +108,14 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    if (addends.length === 0) {
+        return "0=0";
+    }
+    let dupe = addends.reduce((total, curr) => {
+        return total + curr;
+    }, 0);
+    let dupe2 = dupe.toString() + "=";
+    return dupe2 + addends.join("+");
 }
 
 /**
@@ -82,5 +128,22 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    let finale = [...values];
+    if (finale.length === 0) {
+        return [0];
+    }
+    let goated = finale.reduce((total, curr) => {
+        return total + curr;
+    }, 0);
+    let first = finale.findIndex((dupe: number): boolean => dupe < 0);
+    if (first === -1) {
+        finale.push(goated);
+    } else {
+        let goal = finale
+            .slice(0, first)
+            .reduce((total, curr) => total + curr, 0);
+
+        finale.splice(first + 1, 0, goal);
+    }
+    return finale;
 }
