@@ -1,16 +1,55 @@
 import React from "react";
 import "./App.css";
+import { Button, Container, Col, Row } from "react-bootstrap";
 
 function App(): React.JSX.Element {
     return (
         <div className="App">
-            <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript
+            <header style={{ color: "red" }} className="App-header">
+                <h1>
+                    UD CISC275 with React Hooks and TypeScript. Alyssa Sanchez!
+                </h1>
             </header>
+            <div>Hello World</div>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
             </p>
+            <img src="" alt="this is an image of my dog"></img>
+            <ul>
+                <li>First</li>
+                <li>Second</li>
+                <li>third</li>
+            </ul>
+            <Button
+                onClick={() => {
+                    console.log("Hello World!");
+                }}
+            >
+                Log Hello World
+            </Button>
+            <Container>
+                <Row>
+                    <Col>
+                        <div
+                            style={{
+                                width: "100%",
+                                height: "100px",
+                                backgroundColor: "red",
+                            }}
+                        ></div>
+                    </Col>
+                    <Col>
+                        <div
+                            style={{
+                                width: "100%",
+                                height: "100px",
+                                backgroundColor: "red",
+                            }}
+                        ></div>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }
