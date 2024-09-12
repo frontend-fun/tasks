@@ -70,7 +70,9 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const Nnumber = words
+        .filter((s: string): boolean => s.length<4)
+    return Nnumber.length;
 }
 
 /**
@@ -79,7 +81,12 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    if (colors.length==0){
+        return true;
+    }
+    const Nnumber = colors
+        .filter((s: string): boolean => s=="red" || s=="green" || s=="blue")
+    return Nnumber.length==colors.length;
 }
 
 /**
@@ -90,7 +97,12 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    if (addends.length==0){
+        return "0=0";
+    }
+    let sum:number =addends.reduce((currentTotal: number, num: number) => currentTotal+num, 0);
+    let s:string=addends.join("+");
+    return `${sum}=${s}`;
 }
 
 /**
@@ -103,5 +115,19 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const firstNegativeIndex = values.findIndex(n => n < 0);
+    
+    let sum:number = firstNegativeIndex != -1 
+    ? values.slice(0, firstNegativeIndex).reduce((currentTotal: number, num: number) => currentTotal+num, 0)
+    :values.reduce((currentTotal: number, num: number) => currentTotal+num, 0) ;
+
+    if (firstNegativeIndex !== -1) {
+        return [
+          ...values.slice(0, firstNegativeIndex + 1),
+          sum,
+          ...values.slice(firstNegativeIndex + 1)
+        ];
+      }
+
+    return [...values,sum];
 }
