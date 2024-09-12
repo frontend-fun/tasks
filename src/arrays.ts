@@ -64,7 +64,7 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
     const filtered = messages.filter(
         (message: string): boolean => !message.endsWith("?"),
     );
-    const exclaimed = filtered.map((message: string) =>
+    const exclaimed = filtered.map((message: string): string =>
         message.endsWith("!") ? message.toUpperCase() : message,
     );
     return exclaimed;
@@ -75,7 +75,9 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const filtered = words.filter((word: string): boolean => word.length < 4);
+    const short = filtered.length;
+    return short;
 }
 
 /**
