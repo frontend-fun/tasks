@@ -120,22 +120,17 @@ export function makeMath(addends: number[]): string {
 export function injectPositive(values: number[]): number[] {
     let sum = 0;
     let foundNegative = false;
-    // Create a copy of the original array to avoid modifying it
     const result = [...values];
 
-    // Iterate through the array
     for (let i = 0; i < result.length; i++) {
         if (result[i] < 0 && !foundNegative) {
             foundNegative = true;
-            // Insert the sum after the first negative number
             result.splice(i + 1, 0, sum);
-            break; // Stop after inserting the sum
+            break;
         }
-        // Accumulate sum
         sum += result[i];
     }
 
-    // If no negative number was found, append the sum to the end
     if (!foundNegative) {
         result.push(sum);
     }
