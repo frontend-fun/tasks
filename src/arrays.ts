@@ -123,7 +123,7 @@ export function injectPositive(values: number[]): number[] {
     const result = [...values];
 
     for (let i = 0; i < result.length; i++) {
-        if (result[i] < 0 && !foundNegative) {
+        if (result[i] < 0) {
             foundNegative = true;
             result.splice(i + 1, 0, sum);
             break;
