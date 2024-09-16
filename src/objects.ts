@@ -49,13 +49,11 @@ export function isCorrect(question: Question, answer: string): boolean {
 export function isValid(question: Question, answer: string): boolean {
     if (question.type === "short_answer_question") {
         return true;
-    } else if (
-        question.type === "multiple_choice_question" &&
-        question.options
-    ) {
-        return question.options.includes(answer);
     }
-    return false;
+    return (
+        question.type === "multiple_choice_question" &&
+        question.options?.includes(answer)
+    );
 }
 
 /**
@@ -88,10 +86,13 @@ export function toShortForm(question: Question): string {
  */
 export function toMarkdown(question: Question): string {
     let result = `# ${question.name}\n${question.body}`;
-    if (question.type === "multiple_choice_question" && question.options) {
-        question.options.forEach((option) => {
-            result += `\n- ${option}`;
-        });
+
+    if (question.type === "multiple_choice_question") {
+        if (question.options) {
+            result += question.options
+                .map((option) => `\n- ${option}`)
+                .join("");
+        }
     }
 
     return result;
@@ -129,7 +130,7 @@ export function publishQuestion(question: Question): Question {
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
     return {
         ...oldQuestion,
-        id: id,
+        id,
         name: `Copy of ${oldQuestion.name}`,
         published: false,
     };
