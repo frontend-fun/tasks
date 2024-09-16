@@ -48,11 +48,12 @@ export function isCorrect(question: Question, answer: string): boolean {
  */
 export function isValid(question: Question, answer: string): boolean {
     if (question.type === "short_answer_question") {
-        return true;
+        return true; // Any answer is valid
     }
     return (
-        question.type === "multiple_choice_question" &&
-        question.options?.includes(answer)
+        (question.type === "multiple_choice_question" &&
+            question.options?.includes(answer)) ??
+        false
     );
 }
 
