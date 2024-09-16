@@ -33,11 +33,7 @@ export function isCorrect(question: Question, answer: string): boolean {
     const trimmedExpected = question.expected.trim().toLowerCase();
     const trimmedAnswer = answer.trim().toLowerCase();
 
-    if (trimmedExpected === trimmedAnswer) {
-        return true;
-    } else {
-        return false;
-    }
+    return trimmedExpected === trimmedAnswer;
 }
 
 /**
@@ -48,12 +44,11 @@ export function isCorrect(question: Question, answer: string): boolean {
  */
 export function isValid(question: Question, answer: string): boolean {
     if (question.type === "short_answer_question") {
-        return true; // Any answer is valid
+        return true; // Any answer is valid for short answer questions
     }
     return (
-        (question.type === "multiple_choice_question" &&
-            question.options?.includes(answer)) ??
-        false
+        question.type === "multiple_choice_question" &&
+        question.options.includes(answer)
     );
 }
 
@@ -89,11 +84,7 @@ export function toMarkdown(question: Question): string {
     let result = `# ${question.name}\n${question.body}`;
 
     if (question.type === "multiple_choice_question") {
-        if (question.options) {
-            result += question.options
-                .map((option) => `\n- ${option}`)
-                .join("");
-        }
+        result += question.options.map((option) => `\n- ${option}`).join("");
     }
 
     return result;
@@ -147,7 +138,7 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
 export function addOption(question: Question, newOption: string): Question {
     return {
         ...question,
-        options: [...(question.options || []), newOption],
+        options: [...question.options, newOption],
     };
 }
 
