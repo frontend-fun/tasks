@@ -44,12 +44,12 @@ export function isCorrect(question: Question, answer: string): boolean {
  */
 export function isValid(question: Question, answer: string): boolean {
     if (question.type === "short_answer_question") {
-        return true; // Any answer is valid for short answer questions
+        return true;
     }
-    return (
-        question.type === "multiple_choice_question" &&
-        question.options.includes(answer)
-    );
+    if (question.type === "multiple_choice_question") {
+        return question.options.includes(answer);
+    }
+    return false;
 }
 
 /**
