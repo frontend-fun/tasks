@@ -133,8 +133,9 @@ export function makeMath(addends: number[]): string {
 export function injectPositive(values: number[]): number[] {
     const negIndex = values.findIndex((value: number): boolean => value < 0);
     if (negIndex === 0) {
-        values.splice(negIndex + 1, 0, 0);
-        return values;
+        const answer = [...values];
+        answer.splice(negIndex + 1, 0, 0);
+        return answer;
     } else if (negIndex === -1) {
         const newArr = [...values];
         const sum = values.reduce(
@@ -150,7 +151,8 @@ export function injectPositive(values: number[]): number[] {
             (currentTotal: number, value: number) => currentTotal + value,
             0,
         );
-        values.splice(negIndex + 1, 0, sum);
-        return values;
+        const answer = [...values];
+        answer.splice(negIndex + 1, 0, sum);
+        return answer;
     }
 }
