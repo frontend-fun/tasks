@@ -48,19 +48,9 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
-    if (question.type === "short_answer_question") return true;
-    else {
-        /*const trimmedAnswer = answer.trim();
-        const finalAnswer = trimmedAnswer.toLowerCase();
-        const ops = question.options.map((option: string): string =>
-            option.trim().toLowerCase(),
-        );
-        /*const answers = ops.filter(
-            (option: string): boolean => option === finalAnswer,
-        );
-        */
-        return question.options.includes(answer);
-    }
+    if (question.type === "short_answer_question")
+        return true; // Checks if question is a short answer and returns true if so.
+    else return question.options.includes(answer); // returns true if the expected answer is included in the answer options, and returns false otherwise.
 }
 
 /**
@@ -70,7 +60,9 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    return "";
+    const updated = question.name.substring(0, 10); // Trims the name of the question.
+    const final = question.id + ": " + updated; // Stores our answer in a string variable.
+    return final;
 }
 
 /**
