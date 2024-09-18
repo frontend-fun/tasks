@@ -48,7 +48,7 @@ export function isValid(question: Question, answer: string): boolean {
     } else if (question.type === `multiple_choice_question`) {
         return question.options.includes(answer);
     }
-    return false;
+    // return false;
 }
 
 /**
@@ -157,4 +157,3 @@ export function mergeQuestion(
         published: false,
     };
 }
-//////
