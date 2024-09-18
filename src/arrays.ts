@@ -80,6 +80,14 @@ export function countShortWords(words: string[]): number {
 export function allRGB(colors: string[]): boolean {
     const selectedColors = new Set(["red", "blue", "green"]);
     return colors.every((color: string): boolean => selectedColors.has(color));
+    // const findColor = colors.every(
+    // (color: string): boolean =>
+    //     color === "red" || color === "blue" || color === "green",
+    // );
+    //  if (colors.length === 0) {
+    return false;
+    //  }
+    //  return findColor;
 }
 
 /**
@@ -123,10 +131,6 @@ export function injectPositive(values: number[]): number[] {
     if (negativeIndex === -1) {
         return [...values, total_sum];
     }
-    // return values.map((number: number): number =>
-    //      number > 0 ? sum_before_negative : total_sum,
-    //  );
-    // Insert the sum_before_negative after the first negative number
     const result = [
         ...values.slice(0, negativeIndex + 1), // Copy numbers up to and including the first negative
         sum_before_negative, // Insert the sum
