@@ -45,10 +45,14 @@ export function isCorrect(question: Question, answer: string): boolean {
 export function isValid(question: Question, answer: string): boolean {
     if (question.type === `short_answer_question`) {
         return true;
-    } else if (question.type === `multiple_choice_question`) {
-        return question.options.includes(answer);
+    } else if (
+        question.type === `multiple_choice_question` &&
+        question.options.includes(answer)
+    ) {
+        return true;
     }
-    // return false;
+
+    return false;
 }
 
 /**
@@ -81,7 +85,7 @@ export function toShortForm(question: Question): string {
 export function toMarkdown(question: Question): string {
     let marked = `# ${question.name}\n`;
     marked += `${question.body}\n`;
-    if (question.type === "multiple_choice_question" && question.options) {
+    if (question.type === "multiple_choice_question") {
         question.options.forEach((option) => {
             marked += `- ${option}\n`;
         });
