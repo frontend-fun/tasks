@@ -149,7 +149,17 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    const len = questions.length;
+    const mult = questions.filter(
+        (question: Question): boolean =>
+            question.type === "multiple_choice_question",
+    );
+    const short = questions.filter(
+        (question: Question): boolean =>
+            question.type === "short_answer_question",
+    );
+    if (mult.length === len || short.length === len) return true;
+    else return false;
 }
 
 /***
