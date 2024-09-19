@@ -28,10 +28,17 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
     let newQuestions: Question[] = questions.filter(
-        (question: Question): boolean =>
-            question.body !== "" &&
-            question.expected !== "" &&
-            question.options.length !== 0,
+        (question: Question): boolean => {
+            if (
+                question.body === "" &&
+                question.expected === "" &&
+                question.options.length === 0
+            ) {
+                return false;
+            } else {
+                return true;
+            }
+        },
     );
     return newQuestions;
 }
@@ -130,6 +137,7 @@ export function toCSV(questions: Question[]): string {
             (question.published ? "true" : "false"),
     );
     let allTogether: string = stringedQuestions.join("\n");
+    allTogether = "id,name,options,points,published\n" + allTogether;
     return allTogether;
 }
 
@@ -168,9 +176,8 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    let type = questions[0].type;
     let sameType: Question[] = questions.filter(
-        (question: Question): boolean => type === question.type,
+        (question: Question): boolean => question.type === questions[0].type,
     );
     if (questions.length === sameType.length) {
         return true;
@@ -207,9 +214,9 @@ export function renameQuestionById(
     let newQuestions: Question[] = questions.map(
         (question: Question): Question => {
             if (question.id === targetId) {
-                question.name = newName;
+                return { ...question, name: newName };
             }
-            return question;
+            return { ...question };
         },
     );
     return newQuestions;
@@ -230,12 +237,13 @@ export function changeQuestionTypeById(
     let newQuestions: Question[] = questions.map(
         (question: Question): Question => {
             if (question.id === targetId) {
-                question.type = newQuestionType;
+                if (newQuestionType !== "multiple_choice_question") {
+                    return { ...question, type: newQuestionType, options: [] };
+                } else {
+                    return { ...question, type: newQuestionType };
+                }
             }
-            if (newQuestionType !== "multiple_choice_question") {
-                question.options = [];
-            }
-            return question;
+            return { ...question };
         },
     );
     return newQuestions;
@@ -261,12 +269,27 @@ export function editOption(
         (question: Question): Question => {
             if (question.id === targetId) {
                 if (targetOptionIndex === -1) {
-                    question.options = [...question.options, newOption];
+                    return {
+                        ...question,
+                        options: [...question.options, newOption],
+                    };
                 } else {
-                    question.options.splice(targetOptionIndex, 1, newOption);
+                    let copiedQuestion = {
+                        ...question,
+                        options: [...question.options],
+                    };
+                    copiedQuestion.options.splice(
+                        targetOptionIndex,
+                        1,
+                        newOption,
+                    );
+                    return {
+                        ...question,
+                        options: [...copiedQuestion.options],
+                    };
                 }
             }
-            return question;
+            return { ...question };
         },
     );
     return newQuestions;
@@ -289,10 +312,10 @@ export function duplicateQuestionInArray(
             if (question.id === targetId) {
                 duplicatedQuestion = duplicateQuestion(newId, question);
             }
-            return question;
+            return { ...question, options: [...question.options] };
         },
     );
-    let count: number = 0;
+    let count: number = 1;
     copiedQuestions.map((question: Question): void => {
         if (targetId === question.id) {
             copiedQuestions.splice(count, 0, duplicatedQuestion);
