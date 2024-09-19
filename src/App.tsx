@@ -24,7 +24,7 @@ function App(): React.JSX.Element {
             <ChangeType></ChangeType>
             <hr />
             <CycleHoliday></CycleHoliday>
-            <p>CISC275</p>
+            <p>Ethan Fassnacht - CISC275</p>
         </div>
     );
 }
