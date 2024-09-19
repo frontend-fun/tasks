@@ -33,7 +33,7 @@ export function CycleHoliday(): React.JSX.Element {
     return (
         <span>
             <Button onClick={advancedAlpha}>Advance by alphabet</Button>
-            <Button style={{ marginRight: "20px" }} onClick={advancedYear}>
+            <Button style={{ marginRight: "15px" }} onClick={advancedYear}>
                 Advance by year
             </Button>
             Holiday: {holiday}
