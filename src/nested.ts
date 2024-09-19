@@ -247,8 +247,12 @@ export function editOption(
                 :   {
                         ...question,
                         options: [
-                            ...question.options,
-                            (question.options[targetOptionIndex] = newOption),
+                            //(question.options[targetOptionIndex] = newOption),
+                            ...question.options.splice(
+                                targetOptionIndex,
+                                1,
+                                newOption,
+                            ),
                         ],
                     }
             :   { ...question, options: [...question.options] },
@@ -274,7 +278,10 @@ export function duplicateQuestionInArray(
         (question: Question): boolean => question.id === targetId,
     );
     const copyArr = questions.map(
-        (question: Question): Question => ({ ...question }),
+        (question: Question): Question => ({
+            ...question,
+            options: question.options,
+        }),
     );
     if (target === undefined) {
         return copyArr;
