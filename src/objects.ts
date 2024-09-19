@@ -43,13 +43,18 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
-    switch (question.type) {
-        case "short_answer_question":
-            return true;
-        case "multiple_choice_question":
-            return question.options.includes(answer);
-        default:
-            return false;
+    // switch (question.type) {
+    //     case "short_answer_question":
+    //         return true;
+    //     case "multiple_choice_question":
+    //         return question.options.includes(answer);
+    //     default:
+    //         return false;
+    // }
+    if(question.type === "short_answer_question"){
+        return true;
+    }else{
+        return question.options.includes(answer);
     }
 }
 
