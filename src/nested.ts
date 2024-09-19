@@ -31,7 +31,7 @@ export function getNonEmptyQuestions(questions: Question[]): Question[] {
         (question: Question): boolean =>
             question.body !== "" &&
             question.expected !== "" &&
-            question.options[0] !== "",
+            question.options.length !== 0,
     );
     return newQuestions;
 }
@@ -93,7 +93,10 @@ export function sumPublishedPoints(questions: Question[]): number {
     let publishedQuestions: Question[] = questions.filter(
         (question: Question): boolean => question.published,
     );
-    return publishedQuestions.length;
+    let points: number[] = publishedQuestions.map(
+        (question: Question): number => question.points,
+    );
+    return summate(points);
 }
 
 /***
@@ -124,7 +127,7 @@ export function toCSV(questions: Question[]): string {
             "," +
             question.points.toString() +
             "," +
-            question.published,
+            (question.published ? "true" : "false"),
     );
     let allTogether: string = stringedQuestions.join("\n");
     return allTogether;
@@ -165,7 +168,7 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    let type: QuestionType = questions[0].type;
+    let type = questions[0].type;
     let sameType: Question[] = questions.filter(
         (question: Question): boolean => type === question.type,
     );
