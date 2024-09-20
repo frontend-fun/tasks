@@ -91,7 +91,7 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    return { ...question, name: newName };
+    return { ...question, name: newName, options: [...question.options] };
 }
 
 /**
@@ -101,9 +101,9 @@ export function renameQuestion(question: Question, newName: string): Question {
  */
 export function publishQuestion(question: Question): Question {
     if (question.published) {
-        return { ...question, published: false };
+        return { ...question, published: false,options:[...question.options] };
     }
-    return { ...question, published: true };
+    return { ...question, published: true, options:[...question.options]};
 }
 
 /**
@@ -118,6 +118,7 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
         published: false,
         name: `Copy of ${oldQuestion.name}`,
         id: id,
+        options: [...oldQuestion.options],
     };
 }
 
@@ -149,5 +150,12 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number },
 ): Question {
-    return { ...contentQuestion, id: id, name: name, points: points,published:false};
+    return {
+        ...contentQuestion,
+        options:[...contentQuestion.options],
+        id: id,
+        name: name,
+        points: points,
+        published: false,
+    };
 }
