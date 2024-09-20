@@ -84,7 +84,7 @@ export function toShortForm(question: Question): string {
  */
 export function toMarkdown(question: Question): string {
     let marked = `# ${question.name}\n${question.body}\n`;
-    if (question.type === "multiple_choice_question" && question.options) {
+    if (question.type === "multiple_choice_question") {
         question.options.forEach((option) => {
             marked += `- ${option}\n`;
         });
