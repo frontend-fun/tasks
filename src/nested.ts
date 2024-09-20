@@ -198,7 +198,7 @@ export function changeQuestionTypeById(
 function updateOptions(
     options: string[],
     index: number,
-    newOption: string[],
+    newOption: string,
 ): string[] {
     if (index === -1) {
         return [...options, newOption];
