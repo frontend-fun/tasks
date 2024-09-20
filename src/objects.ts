@@ -85,13 +85,11 @@ export function toShortForm(question: Question): string {
 export function toMarkdown(question: Question): string {
     let marked = `# ${question.name}\n${question.body}\n`;
     if (question.type === "multiple_choice_question") {
-        question.options.forEach((option) => {
-            marked += `- ${option}\n`;
-        });
+        marked += question.options.map((option) => `- ${option}`).join(`\n`);
     }
     return marked.trim();
 }
-
+/////
 /**
  * Return a new version of the given question, except the name should now be
  * `newName`.
