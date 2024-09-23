@@ -50,7 +50,7 @@ export function isValid(question: Question, answer: string): boolean {
         return question.options.includes(answer);
     }
 }
-
+//////
 /**
  * Consumes a question and produces a string representation combining the
  * `id` and first 10 characters of the `name`. The two strings should be
