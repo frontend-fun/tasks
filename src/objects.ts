@@ -51,9 +51,9 @@ export function isValid(question: Question, answer: string): boolean {
     //     default:
     //         return false;
     // }
-    if(question.type === "short_answer_question"){
+    if (question.type === "short_answer_question") {
         return true;
-    }else{
+    } else {
         return question.options.includes(answer);
     }
 }
