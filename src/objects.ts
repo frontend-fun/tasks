@@ -43,13 +43,17 @@ export function isCorrect(question: Question, answer: string): boolean {
  * any answer is valid. But for a `multiple_choice_question`, the `answer` must
  * be exactly one of the options.
  */
+
+//Was having a lot of trouble with this function so I used switch and case instead
 export function isValid(question: Question, answer: string): boolean {
-    if (question.type === "short_answer_question") {
-        return true;
-    } else if (question.type === "multiple_choice_question") {
-        return question.options.includes(answer.trim());
+    switch (question.type) {
+        case "short_answer_question":
+            return true;
+        case "multiple_choice_question":
+            return question.options.includes(answer);
+        default:
+            return false;
     }
-    return false;
 }
 
 /**
