@@ -23,9 +23,6 @@ export function TwoDice(): React.JSX.Element {
         setRightDie(d6());
     };
 
-    // const isWin = leftDie === rightDie;
-    // const isLose = leftDie === 1 && rightDie === 1;
-
     return (
         <div>
             <span data-testid="left-die">{leftDie}</span>
