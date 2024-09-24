@@ -12,58 +12,56 @@ export function d6(): number {
 }
 
 export function TwoDice(): React.JSX.Element {
-    const [leftDie, setLeftDie] = useState<number>(() => {
-        let value = d6();
-        let otherValue;
-        do {
-            otherValue = d6();
-        } while (value === otherValue); // Ensure different initial values
-        return value;
-    });
-
-    const [rightDie, setRightDie] = useState<number>(() => {
-        let value;
-        do {
-            value = d6();
-        } while (value === leftDie); // Ensure different initial values
-        return value;
-    });
-
-    // Function to handle rolling the left die
-    const rollLeft = () => {
-        setLeftDie(d6());
+    const getInitialDiceValues = () => {
+        let left = d6();
+        let right = d6();
+        while (left === right) {
+            right = d6(); // Regenerate right value until it's different
+        }
+        return [left, right];
     };
 
-    // Function to handle rolling the right die
-    const rollRight = () => {
-        setRightDie(d6());
+    // Use the function to set the initial state
+    const [leftNumber, setLeftNumber] = useState<number>(
+        getInitialDiceValues()[0],
+    );
+    const [rightNumber, setRightNumber] = useState<number>(
+        getInitialDiceValues()[1],
+    );
+    const [message, setMessage] = useState<string>("");
+
+    // Update left die only on button click
+    const handleRollLeft = () => {
+        const newValue = d6();
+        setLeftNumber(newValue);
+        checkGameStatus(newValue, rightNumber);
     };
 
-    // Determine win or lose state
-    const isWin = leftDie === rightDie && leftDie !== 1;
-    const isLose = leftDie === 1 && rightDie === 1;
+    // Update right die only on button click
+    const handleRollRight = () => {
+        const newValue = d6();
+        setRightNumber(newValue);
+        checkGameStatus(leftNumber, newValue);
+    };
+
+    // Check for win/loss conditions
+    const checkGameStatus = (left: number, right: number) => {
+        if (left === 1 && right === 1) {
+            setMessage("Lose: Snake Eyes!");
+        } else if (left === right) {
+            setMessage("Win: Matching Dice!");
+        } else {
+            setMessage(""); // Clear message if no condition met
+        }
+    };
 
     return (
         <div>
-            <div>
-                <span data-testid="left-die">Left Die: {leftDie}</span>
-            </div>
-            <div>
-                <span data-testid="right-die">Right Die: {rightDie}</span>
-            </div>
-
-            <div>
-                <Button onClick={rollLeft}>Roll Left</Button>
-                <Button onClick={rollRight}>Roll Right</Button>
-            </div>
-
-            <div>
-                {isLose && <div>You Lose! Snake Eyes!</div>}
-                {isWin && <div>You Win!</div>}
-                {leftDie === rightDie && leftDie !== 1 && (
-                    <div>You Matched!</div>
-                )}
-            </div>
+            <div data-testid="left-die">{leftNumber}</div>
+            <div data-testid="right-die">{rightNumber}</div>
+            <button onClick={handleRollLeft}>Roll Left</button>
+            <button onClick={handleRollRight}>Roll Right</button>
+            {message && <div>{message}</div>}
         </div>
     );
 }
