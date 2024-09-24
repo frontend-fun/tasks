@@ -15,15 +15,12 @@ export function TwoDice(): React.JSX.Element {
     const [leftNumber, setLeftNumber] = useState<number>(1);
     const [rightNumber, setRightNumber] = useState<number>(1);
 
-    // Function to simulate rolling the dice
     const rollDice = () => Math.floor(Math.random() * 6) + 1;
 
-    // Update left die only on button click
     const handleRollLeft = () => {
         setLeftNumber(rollDice());
     };
 
-    // Update right die only on button click
     const handleRollRight = () => {
         setRightNumber(rollDice());
     };
@@ -32,8 +29,13 @@ export function TwoDice(): React.JSX.Element {
         <div>
             <div data-testid="left-die">{leftNumber}</div>
             <div data-testid="right-die">{rightNumber}</div>
-            <button onClick={handleRollLeft}>Roll Left</button>
-            <button onClick={handleRollRight}>Roll Right</button>
+
+            <Button variant="primary" onClick={handleRollLeft}>
+                Roll Left
+            </Button>
+            <Button variant="primary" onClick={handleRollRight}>
+                Roll Right
+            </Button>
         </div>
     );
 }
