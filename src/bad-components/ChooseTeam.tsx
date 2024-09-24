@@ -47,6 +47,7 @@ export function ChooseTeam(): React.JSX.Element {
                     <Button
                         onClick={() => {
                             setTeam([]);
+                            setAllOptions(allOptions);
                         }}
                     >
                         Clear Team
