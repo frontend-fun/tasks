@@ -6,10 +6,7 @@ interface ValuesProp {
     dhValue: number;
 }
 
-function Doubler(
-    { setDhValue }: ValuesProp,
-    { dhValue }: ValuesProp,
-): React.JSX.Element {
+function Doubler({ setDhValue, dhValue }: ValuesProp): React.JSX.Element {
     return (
         <Button
             onClick={() => {
@@ -21,10 +18,7 @@ function Doubler(
     );
 }
 
-function Halver(
-    { setDhValue }: ValuesProp,
-    { dhValue }: ValuesProp,
-): React.JSX.Element {
+function Halver({ setDhValue, dhValue }: ValuesProp): React.JSX.Element {
     return (
         <Button
             onClick={() => {
