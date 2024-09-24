@@ -15,12 +15,14 @@ export function TwoDice(): React.JSX.Element {
     const [leftNumber, setLeftNumber] = useState<number>(1);
     const [rightNumber, setRightNumber] = useState<number>(1);
 
+    
     const rollDice = () => Math.floor(Math.random() * 6) + 1;
 
     const handleRollLeft = () => {
         setLeftNumber(rollDice());
     };
 
+    // Update right die only on button click
     const handleRollRight = () => {
         setRightNumber(rollDice());
     };
@@ -29,7 +31,6 @@ export function TwoDice(): React.JSX.Element {
         <div>
             <div data-testid="left-die">{leftNumber}</div>
             <div data-testid="right-die">{rightNumber}</div>
-
             <Button variant="primary" onClick={handleRollLeft}>
                 Roll Left
             </Button>
