@@ -12,8 +12,8 @@ export function d6(): number {
 }
 
 export function TwoDice(): React.JSX.Element {
-    const [die1, setDie1] = useState<number>(d6());
-    const [die2, setDie2] = useState<number>(d6());
+    const [die1, setDie1] = useState<number>(1);
+    const [die2, setDie2] = useState<number>(2);
     const [initialRoll, setInitialRoll] = useState<boolean>(true);
 
     function setFirstDie(): void {
