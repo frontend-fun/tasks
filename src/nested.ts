@@ -64,7 +64,7 @@ export function sumPoints(questions: Question[]): number {
  */
 export function sumPublishedPoints(questions: Question[]): number {
     return questions
-        .filter((question) => question.published === true)
+        .filter((question) => question.published)
         .reduce((total, question) => total + question.points, 0);
 }
 
