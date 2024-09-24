@@ -12,31 +12,31 @@ export function d6(): number {
 }
 
 export function TwoDice(): React.JSX.Element {
-    const [leftNumber, setLeftNumber] = useState<number>(1);
-    const [rightNumber, setRightNumber] = useState<number>(1);
+    const [leftDie, setLeftDie] = useState<number>(1);
+    const [rightDie, setRightDie] = useState<number>(2);
 
-    
-    const rollDice = () => Math.floor(Math.random() * 6) + 1;
-
-    const handleRollLeft = () => {
-        setLeftNumber(rollDice());
+    const rollLeft = () => {
+        setLeftDie(d6());
     };
 
-    // Update right die only on button click
-    const handleRollRight = () => {
-        setRightNumber(rollDice());
+    const rollRight = () => {
+        setRightDie(d6());
     };
+
+    // const isWin = leftDie === rightDie;
+    // const isLose = leftDie === 1 && rightDie === 1;
 
     return (
         <div>
-            <div data-testid="left-die">{leftNumber}</div>
-            <div data-testid="right-die">{rightNumber}</div>
-            <Button variant="primary" onClick={handleRollLeft}>
-                Roll Left
-            </Button>
-            <Button variant="primary" onClick={handleRollRight}>
-                Roll Right
-            </Button>
+            <span data-testid="left-die">{leftDie}</span>
+            <span data-testid="right-die">{rightDie}</span>
+            <div>
+                <Button onClick={rollLeft}>Roll Left</Button>
+                <Button onClick={rollRight}>Roll Right</Button>
+            </div>
+            {leftDie === rightDie && (
+                <p>{leftDie === 1 ? "You lose" : "You Win"}</p>
+            )}
         </div>
     );
 }
