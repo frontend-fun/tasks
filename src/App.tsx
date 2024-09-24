@@ -6,8 +6,8 @@ import { StartAttempt } from "./components/StartAttempt";
 import { TwoDice } from "./components/TwoDice";
 import { CycleHoliday } from "./components/CycleHoliday";
 import { Counter } from "./components/Counter";
-import pookie from "./Assets/pookie.jpg";
-import { Button, Col, Container, Row } from "react-bootstrap";
+// import pookie from "./Assets/pookie.jpg";
+// import { Button, Col, Container, Row } from "react-bootstrap";
 
 function App(): React.JSX.Element {
     return (
