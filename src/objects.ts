@@ -10,17 +10,7 @@ export function makeBlankQuestion(
     name: string,
     type: QuestionType,
 ): Question {
-    const question = {
-        id,
-        name,
-        type,
-        body: "",
-        expected: "",
-        options: [],
-        points: 1,
-        published: false,
-    };
-    return question;
+    return {};
 }
 
 /**
@@ -31,14 +21,7 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
-    const trimmedAnswer = answer.trim();
-    const finalAnswer = trimmedAnswer.toLowerCase();
-    const trimmedQ = {
-        ...question,
-        expected: question.expected.trim().toLowerCase(),
-    };
-    if (trimmedQ.expected === finalAnswer) return true;
-    else return false;
+    return false;
 }
 
 /**
@@ -48,9 +31,7 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
-    if (question.type === "short_answer_question")
-        return true; // Checks if question is a short answer and returns true if so.
-    else return question.options.includes(answer); // returns true if the expected answer is included in the answer options, and returns false otherwise.
+    return false;
 }
 
 /**
@@ -60,9 +41,7 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    const updated = question.name.substring(0, 10); // Trims the name of the question.
-    const final = question.id + ": " + updated; // Stores our answer in a string variable.
-    return final;
+    return "";
 }
 
 /**
@@ -83,15 +62,7 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    if (question.type === "short_answer_question")
-        return "# " + question.name + "\n" + question.body;
-    else {
-        const options = question.options.map(
-            (option: string): string => "\n- " + option,
-        );
-        const newOptions = options.join("");
-        return "# " + question.name + "\n" + question.body + newOptions;
-    }
+    return "";
 }
 
 /**
@@ -99,8 +70,7 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    const newQuestion = { ...question, name: newName };
-    return newQuestion;
+    return question;
 }
 
 /**
@@ -109,8 +79,7 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    const newQuestion = { ...question, published: !question.published };
-    return newQuestion;
+    return question;
 }
 
 /**
@@ -120,13 +89,7 @@ export function publishQuestion(question: Question): Question {
  * The `published` field should be reset to false.
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
-    const newQuestion = {
-        ...oldQuestion,
-        id: id,
-        name: "Copy of " + oldQuestion.name,
-        published: false,
-    };
-    return newQuestion;
+    return oldQuestion;
 }
 
 /**
@@ -137,11 +100,7 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
-    const newQuestion = {
-        ...question,
-        options: [...question.options, newOption],
-    };
-    return newQuestion;
+    return question;
 }
 
 /**
@@ -158,12 +117,5 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number },
 ): Question {
-    const newQuestion = {
-        ...contentQuestion,
-        points: points,
-        id: id,
-        name: name,
-        published: false,
-    };
-    return newQuestion;
+    return contentQuestion;
 }
