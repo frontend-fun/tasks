@@ -1,8 +1,13 @@
 import React from "react";
 import "./App.css";
-import { Button, Container, Col, Row } from "react-bootstrap";
-import picture from "./Images/eyes 1.jpg";
-function App(): React.JSX.Element {
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { StartAttempt } from "./components/StartAttempt";
+import { TwoDice } from "./components/TwoDice";
+import { CycleHoliday } from "./components/CycleHoliday";
+import { Counter } from "./components/Counter";
+
+function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
@@ -10,50 +15,18 @@ function App(): React.JSX.Element {
                 <h2> Web Application Practice</h2>
                 My name is Brishna
             </header>
-
-            <p>Hello World</p>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
-            <div>
-                <Container>
-                    <Row>
-                        <Col>
-                            <div
-                                style={{
-                                    width: "100px",
-                                    height: "50px",
-                                    backgroundColor: "red",
-                                }}
-                            ></div>
-                        </Col>
-                        <Col>
-                            <div
-                                style={{
-                                    width: "100px",
-                                    height: "50px",
-                                    backgroundColor: "red",
-                                }}
-                            ></div>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-            <img src={picture} alt="Reading The Mind In The Eyes Test" />
-
-            <ol>
-                <li>Beautiful</li>
-                <li>Amazing</li>
-                <li>Interesting</li>
-            </ol>
-            <Button
-                onClick={() => {
-                    console.log("Hello World!");
-                }}
-            >
-                Log Hello World
-            </Button>
+            <hr></hr>
+            <Counter></Counter>
+            <hr />
+            <RevealAnswer></RevealAnswer>
+            <hr />
+            <StartAttempt></StartAttempt>
+            <hr />
+            <TwoDice></TwoDice>
+            <hr />
+            <ChangeType></ChangeType>
+            <hr />
+            <CycleHoliday></CycleHoliday>
         </div>
     );
 }
