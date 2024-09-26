@@ -33,6 +33,8 @@ export function isCorrect(question: Question, answer: string): boolean {
     const newAnswer = answer.trim().toLowerCase();
     const newExpected = question.expected.trim().toLowerCase();
     return newAnswer === newExpected;
+
+    //return false;
 }
 
 /**
@@ -41,6 +43,7 @@ export function isCorrect(question: Question, answer: string): boolean {
  * any answer is valid. But for a `multiple_choice_question`, the `answer` must
  * be exactly one of the options.
  */
+
 // This one might be a problem in future.
 export function isValid(question: Question, answer: string): boolean {
     if (question.type === "short_answer_question") {
@@ -48,7 +51,6 @@ export function isValid(question: Question, answer: string): boolean {
     } else {
         return question.options.includes(answer);
     }
-    // return false;
 }
 
 /**
@@ -61,6 +63,8 @@ export function toShortForm(question: Question): string {
     const id = question.id;
     const nameChar = question.name.slice(0, 10);
     return `${id}: ${nameChar}`;
+
+    //return "";
 }
 
 /**
@@ -87,6 +91,8 @@ export function toMarkdown(question: Question): string {
         markDown += question.options.map((option) => `- ${option}`).join(`\n`);
     }
     return markDown.trim();
+
+    // return "";
 }
 
 /**
@@ -95,6 +101,7 @@ export function toMarkdown(question: Question): string {
  */
 export function renameQuestion(question: Question, newName: string): Question {
     return { ...question, name: newName };
+    //return question;
 }
 
 /**
@@ -104,6 +111,8 @@ export function renameQuestion(question: Question, newName: string): Question {
  */
 export function publishQuestion(question: Question): Question {
     return { ...question, published: !question.published };
+
+    //return question;
 }
 
 /**
@@ -123,6 +132,8 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
         points: oldQuestion.points,
         published: false,
     };
+
+    //return oldQuestion;
 }
 
 /**
@@ -134,6 +145,8 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  */
 export function addOption(question: Question, newOption: string): Question {
     return { ...question, options: [...question.options, newOption] };
+
+    // return question;
 }
 
 /**
@@ -148,6 +161,7 @@ export function mergeQuestion(
     id: number,
     name: string,
     contentQuestion: Question,
+
     { points }: { points: number },
 ): Question {
     return {
