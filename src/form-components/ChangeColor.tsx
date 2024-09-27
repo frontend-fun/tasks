@@ -29,17 +29,24 @@ export function ChangeColor(): React.JSX.Element {
                     type="radio"
                     name="colors"
                     onChange={updateColor}
-                    id="color-check"
                     label={c}
                     key={c}
                     value={c}
                     checked={color === c}
+                    style={{ backgroundColor: c }}
                 />
             ))}
             <br></br>
-            <span data-testid="colored-box">You have chosen</span>
-            <span>{color}</span>
-            <span>.</span>
+            <span>
+                You have chosen{" "}
+                <span
+                    data-testid="colored-box"
+                    style={{ backgroundColor: color }}
+                >
+                    {color}
+                </span>
+                .
+            </span>
         </div>
     );
 }
