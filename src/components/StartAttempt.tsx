@@ -23,17 +23,17 @@ export function StartAttempt(): React.JSX.Element {
             <h1>Start Attempt</h1>
             <div>Attempts left: {attempt}</div>
 
-            <button onClick={startQuiz} disabled={inProgress || attempt === 0}>
+            <Button onClick={startQuiz} disabled={inProgress || attempt === 0}>
                 Start Quiz
-            </button>
+            </Button>
 
-            <button onClick={stopQuiz} disabled={!inProgress}>
+            <Button onClick={stopQuiz} disabled={!inProgress}>
                 Stop Quiz
-            </button>
+            </Button>
 
-            <button onClick={mulligan} disabled={inProgress}>
+            <Button onClick={mulligan} disabled={inProgress}>
                 Mulligan
-            </button>
+            </Button>
         </div>
     );
 }
