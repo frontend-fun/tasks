@@ -38,8 +38,8 @@ export function CycleHoliday(): React.JSX.Element {
     return (
         <div>
             <h1>Holiday: {currentHoliday.emoji}</h1>
-            <button onClick={advanceAlphabetically}>Advance by Alphabet</button>
-            <button onClick={advanceByYear}>Advance by Year</button>
+            <Button onClick={advanceAlphabetically}>Advance by Alphabet</Button>
+            <Button onClick={advanceByYear}>Advance by Year</Button>
         </div>
     );
 }
