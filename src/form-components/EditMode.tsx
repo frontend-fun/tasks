@@ -1,43 +1,54 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
 
 export function EditMode(): React.JSX.Element {
-    const [editMode, setEditMode] = useState<boolean>(false);
-    const [name, setName] = useState<string>("Your Name");
-    const [isStudent, setIsStudent] = useState<boolean>(true);
+    const [isEditMode, setIsEditMode] = useState(false);
+    const [userName, setUserName] = useState("Your Name");
+    const [isStudent, setIsStudent] = useState(true);
+
+    const handleToggleEditMode = () => {
+        setIsEditMode((prevMode) => !prevMode);
+    };
+
+    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUserName(event.target.value);
+    };
+
+    const handleStudentChange = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        setIsStudent(event.target.checked);
+    };
 
     return (
         <div>
             <h3>Edit Mode</h3>
-            <Form.Check
-                type="switch"
-                id="edit-mode-switch"
-                label="Edit Mode"
-                checked={editMode}
-                onChange={() => {
-                    setEditMode(!editMode);
-                }}
-            />
-            {editMode ?
+            <label className="form-switch">
+                {" "}
+                <input
+                    type="checkbox"
+                    checked={isEditMode}
+                    onChange={handleToggleEditMode}
+                />
+                Edit Mode
+            </label>
+            {isEditMode ?
                 <div>
                     <input
                         type="text"
-                        value={name}
-                        onChange={(e) => {
-                            setName(e.target.value); 
-                        }}
+                        value={userName}
+                        onChange={handleNameChange}
                     />
-                    <Form.Check
-                        type="checkbox"
-                        label="Is Student"
-                        checked={isStudent}
-                        onChange={() => {
-                            setIsStudent(!isStudent); 
-                        }}
-                    />
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={isStudent}
+                            onChange={handleStudentChange}
+                        />
+                        Are you a student?
+                    </label>
                 </div>
             :   <p>
-                    {name} is {isStudent ? "a student" : "not a student"}
+                    {userName} is {isStudent ? "a student" : "not a student"}.
                 </p>
             }
         </div>

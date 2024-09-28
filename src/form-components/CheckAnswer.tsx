@@ -11,8 +11,7 @@ export function CheckAnswer({
         setUserAnswer(event.target.value);
     };
 
-    const isCorrect =
-        userAnswer.trim().toLowerCase() === expectedAnswer.trim().toLowerCase();
+    const isCorrect = userAnswer.trim() === expectedAnswer;
 
     return (
         <div>
@@ -21,9 +20,15 @@ export function CheckAnswer({
                 type="text"
                 value={userAnswer}
                 onChange={handleInputChange}
-                placeholder="Enter your answer"
+                placeholder="Type your answer"
             />
-            <div>{userAnswer && (isCorrect ? "✔️" : "❌")}</div>
+            <p>
+                {userAnswer === "" ?
+                    "❌"
+                : isCorrect ?
+                    "✔️"
+                :   "❌"}
+            </p>
         </div>
     );
 }
