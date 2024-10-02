@@ -6,31 +6,31 @@ interface DoubleHalfButtonProps {
     setDhValue: (dhValue: number) => void;
     dhValue: number;
 }
-
+function Doubler(props: DoubleHalfButtonProps): React.JSX.Element {
+    return (
+        <Button
+            onClick={() => {
+                props.setDhValue(2 * props.dhValue);
+            }}
+        >
+            Double
+        </Button>
+    );
+}
+function Halver(props: DoubleHalfButtonProps): React.JSX.Element {
+    return (
+        <Button
+            onClick={() => {
+                props.setDhValue(0.5 * props.dhValue);
+            }}
+        >
+            Halve
+        </Button>
+    );
+}
 export function DoubleHalf(): React.JSX.Element {
     const [dhValue, setDhValue] = useState<number>(10);
-    function Doubler(props: DoubleHalfButtonProps): React.JSX.Element {
-        return (
-            <Button
-                onClick={() => {
-                    props.setDhValue(2 * props.dhValue);
-                }}
-            >
-                Double
-            </Button>
-        );
-    }
-    function Halver(props: DoubleHalfButtonProps): React.JSX.Element {
-        return (
-            <Button
-                onClick={() => {
-                    props.setDhValue(0.5 * props.dhValue);
-                }}
-            >
-                Halve
-            </Button>
-        );
-    }
+
     return (
         <div>
             <h3>Double Half</h3>
