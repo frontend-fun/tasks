@@ -24,7 +24,7 @@ export function MultipleChoiceQuestion({
             <Form.Group controlId="option">
                 <Form.Label>What is the correct option?</Form.Label>
                 <Form.Select value={selectedOption} onChange={handleChanges}>
-                    {options.map((option, index) => (
+                    {options.map((option) => (
                         <option key={option} value={option}>
                             {option}
                         </option>
