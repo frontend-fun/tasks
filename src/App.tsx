@@ -8,6 +8,10 @@ import { CycleHoliday } from "./components/CycleHoliday";
 import { Counter } from "./components/Counter";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import AI_picture from "./AI_picture.jpeg";
+import { DoubleHalf } from "./bad-components/DoubleHalf";
+import { ColoredBox } from "./bad-components/ColoredBox";
+import { ShoveBox } from "./bad-components/ShoveBox";
+import { ChooseTeam } from "./bad-components/ChooseTeam";
 
 function App(): React.JSX.Element {
     return (
@@ -53,6 +57,14 @@ function App(): React.JSX.Element {
                     </Row>
                 </Container>
             </header>
+            <hr></hr>
+            {<DoubleHalf></DoubleHalf> }
+            <hr></hr>
+            <ChooseTeam></ChooseTeam>
+            <hr></hr>
+            <ColoredBox></ColoredBox>
+            <hr></hr>
+            <ShoveBox></ShoveBox>
             <hr></hr>
             <Counter></Counter>
             <hr />
