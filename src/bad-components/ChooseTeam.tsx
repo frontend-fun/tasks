@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Row, Col } from "react-bootstrap";
-
+//Name of the people:
 const PEOPLE = [
     "Alan Turing",
     "Grace Hopper",
@@ -17,16 +17,13 @@ export function ChooseTeam(): React.JSX.Element {
     function chooseMember(newMember: string) {
         setAllOptions(PEOPLE);
 
-         if (!team.includes(newMember)) {
+        if (!team.includes(newMember)) {
             setTeam([...team, newMember]);
         }
-
     }
 
     function clearTeam() {
-        
         setTeam([]);
-        
     }
 
     return (
@@ -38,7 +35,9 @@ export function ChooseTeam(): React.JSX.Element {
                         <div key={option} style={{ marginBottom: "4px" }}>
                             Add{" "}
                             <Button
-                                onClick={() => chooseMember(option)}
+                                onClick={() => {
+                                    chooseMember(option);
+                                }}
                                 size="sm"
                             >
                                 {option}
@@ -55,7 +54,7 @@ export function ChooseTeam(): React.JSX.Element {
                             </li>
                         ))}
                     </ul>
-                    
+
                     <Button onClick={clearTeam}>Clear Team</Button>
                 </Col>
             </Row>
