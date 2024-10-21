@@ -12,7 +12,7 @@ export function EditMode(): React.JSX.Element {
     return (
         <div>
             <h3>Edit Mode</h3>
-            <label>
+            <label className="form-switch">
                 <input
                     type="checkbox"
                     checked={isEditMode}
