@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export function EditMode(): React.JSX.Element {
     const [isEditMode, setIsEditMode] = useState<boolean>(false);
     const [name, setName] = useState<string>("Your Name");
-    const [isStudent, setIsStudent] = useState<boolean>(false);
+    const [isStudent, setIsStudent] = useState<boolean>(true);
 
     const toggleEditMode = () => {
         setIsEditMode((prev) => !prev);
