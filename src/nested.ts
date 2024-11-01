@@ -32,13 +32,13 @@ export function findQuestion(
     questions: Question[],
     id: number,
 ): Question | null {
-    const question = questions.find((question) => question.id === id);
-    return question || null;
+    return questions.find((question) => question.id === id) || null;
 }
 
 /**
  * Consumes an array of questions and returns a new array that does not contain the question
  * with the given `id`.
+ * Hint: use filter
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
     return questions.filter((question) => question.id !== id);
@@ -47,6 +47,7 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
 /***
  * Consumes an array of questions and returns a new array containing just the names of the
  * questions, as an array.
+ * Do not modify the input array.
  */
 export function getNames(questions: Question[]): string[] {
     return questions.map((question) => question.name);
@@ -103,15 +104,16 @@ export function toCSV(questions: Question[]): string {
 export function makeAnswers(questions: Question[]): Answer[] {
     return questions.map((question) => ({
         questionId: question.id,
+        correct: false,
         text: "",
         submitted: false,
-        correct: false,
     }));
 }
 
 /***
  * Consumes an array of Questions and produces a new array of questions, where
  * each question is now published, regardless of its previous published status.
+ * Hint: as usual, do not modify the input questions array
  */
 export function publishAll(questions: Question[]): Question[] {
     return questions.map((question) => ({
@@ -137,6 +139,7 @@ export function sameType(questions: Question[]): boolean {
  * Consumes an array of Questions and produces a new array of the same Questions,
  * except that a blank question has been added onto the end. Reuse the `makeBlankQuestion`
  * you defined in the `objects.ts` file.
+ * Hint: as usual, do not modify the input questions array
  */
 export function addNewQuestion(
     questions: Question[],
@@ -152,6 +155,8 @@ export function addNewQuestion(
  * Consumes an array of Questions and produces a new array of Questions, where all
  * the Questions are the same EXCEPT for the one with the given `targetId`. That
  * Question should be the same EXCEPT that its name should now be `newName`.
+ * Hint: as usual, do not modify the input questions array,
+ *       to make a new copy of a question with some changes, use the ... operator
  */
 export function renameQuestionById(
     questions: Question[],
@@ -202,6 +207,8 @@ export function changeQuestionTypeById(
  *
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
+ *
+ * Hint: you need to use the ... operator for both the question and the options array
  */
 export function editOption(
     questions: Question[],
@@ -250,7 +257,11 @@ export function duplicateQuestionInArray(
 
     if (index !== -1) {
         const originalQuest = questions[index];
-        const duplicate = { ...originalQuest, id: newId };
+        const duplicate = {
+            ...originalQuest,
+            id: newId,
+            name: `Copy of ${originalQuest.name}`,
+        };
 
         return [
             ...questions.slice(0, index + 1),
