@@ -10,7 +10,7 @@ function App(): React.JSX.Element {
                 <h1></h1>UM COS420 with React Hooks and TypeScript<h1></h1>
             </header>
             <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.redbubble.com%2Fi%2Fmagnet%2FLETTER-S-BY-ESONE-URBAN-GRAFFITI-STREET-STYLE-by-GraffitiBomberZ%2F87139308.TBCTK&psig=AOvVaw20W4BlnizCeHnI5syDht1E&ust=1741215870936000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJit193E8YsDFQAAAAAdAAAAABAE"
+                src="https://images.fineartamerica.com/images/artworkimages/medium/3/letter-s-graffiti-alphabet-s-typography-blue-letter-s-bubble-letter-s-elsayed-atta-transparent.png"
                 alt="Placeholder Image"
             />
             <ul>
@@ -20,10 +20,19 @@ function App(): React.JSX.Element {
             </ul>
             <button
                 className="btn btn-primary"
-                onClick={() => console.log("Hello World!")}>
+                onClick={() => {
+                    console.log("Hello World!");
+                }}
+            >
                 Log Hello World
             </button>
-            <div style={{width: "100px",height: "50px",backgroundColor: "red",}}></div>
+            <div
+                style={{
+                    width: "100px",
+                    height: "50px",
+                    backgroundColor: "red",
+                }}
+            ></div>
 
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
