@@ -30,7 +30,7 @@ jobs:
               with:
                   fetch-depth: 0
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
             - id: get-repo-values
@@ -39,7 +39,7 @@ jobs:
                   url=https://$(echo "${{github.repository}}" | sed "s/\//.github.io\//")
                   echo "url=$url" >> $GITHUB_OUTPUT
             - name: Update package.json homepage
-              uses: jossef/action-set-json-field@v1
+              uses: jossef/action-set-json-field@v2.1
               with:
                   file: package.json
                   field: homepage
@@ -134,14 +134,14 @@ jobs:
             #      echo "</body></html>" >> ./dist/index.html
             # Deploy
             - name: Setup Pages
-              uses: actions/configure-pages@v3
+              uses: actions/configure-pages@v5
               if: ${{ !cancelled() }}
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v2
+              uses: actions/upload-pages-artifact@v3
               if: ${{ !cancelled() }}
               with:
                   path: "dist/"
             - name: Deploy to GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v2
+              uses: actions/deploy-pages@v4
               if: ${{ !cancelled() }}
