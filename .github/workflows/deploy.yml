@@ -24,29 +24,26 @@ concurrency:
 jobs:
     deploy:
         runs-on: ubuntu-latest
-        strategy:
-          matrix:
-            node-version: [20]
         steps:
             - name: Checkout
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - name: Setup Node.js
+            - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-            #- id: get-repo-values
-            #  name: Get repository values
-            #  run: |
-            #      url=https://$(echo "${{github.repository}}" | sed "s/\//.github.io\//")
-            #      echo "url=$url" >> $GITHUB_OUTPUT
+            - id: get-repo-values
+              name: Get repository values
+              run: |
+                  url=https://$(echo "${{github.repository}}" | sed "s/\//.github.io\//")
+                  echo "url=$url" >> $GITHUB_OUTPUT
             - name: Update package.json homepage
               uses: jossef/action-set-json-field@v1
               with:
                   file: package.json
                   field: homepage
-                  value: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+                  value: ${{ steps.get-repo-values.outputs.url }}
             # create_redirects
             - name: Create Redirects and Links
               id: create_redirects
@@ -55,7 +52,6 @@ jobs:
                   echo "<html><head>\
                   <meta http-equiv='refresh' content='0; URL=${{github.server_url}}/${{github.repository}}' />\
                   </head><body>Redirecting to repository</body></html>" > ./dist/repo.html
-
                   mkdir -p docs
                   cp README.md docs/index.md
                   echo "# Quick Links" > docs/quick-links.md
@@ -96,8 +92,8 @@ jobs:
                   echo "* [Tests](../tests.html)" >> docs/quick-links.md
             # Verify Integrity
             - name: Verify Integrity
-              #if: ${{ !cancelled() }}
-              #id: integrity
+              if: ${{ !cancelled() }}
+              id: integrity
               run: |
                   echo "<html><body><pre>" > ./dist/integrity.html
                   find src -type f -name "*.test.ts" -exec md5sum {} + >> ./dist/integrity.html
@@ -110,16 +106,16 @@ jobs:
                   echo "* [Integrity](../integrity.html)" >> docs/quick-links.md
             # Create GitInspector Report
             - name: Create GitInspector Report
-              #if: ${{ !cancelled() }}
-              #id: gitinspector
+              if: ${{ !cancelled() }}
+              id: gitinspector
               run: |
                   git clone https://github.com/jpwhite3/gitinspector.git
                   python ./gitinspector/gitinspector.py ./ --grading --format=html -f tsx,ts,html,css -x ./gitinspector -x ./node_modules -x ./wbcore > ./dist/git.html
                   echo "* [Git Inspector](../git.html)" >> docs/quick-links.md
             # Generate HTML from Markdown in Docs/
             - name: Generate HTML from Markdown in Docs/
-              #if: ${{ !cancelled() }}
-              #id: markdown-docs
+              if: ${{ !cancelled() }}
+              id: markdown-docs
               uses: ldeluigi/markdown-docs@latest
               with:
                   src: docs
@@ -141,12 +137,10 @@ jobs:
               if: ${{ !cancelled() }}
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v4
-              #if: ${{ !cancelled() }}
+              if: ${{ !cancelled() }}
               with:
                   path: "dist/"
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
-              #if: ${{ !cancelled() }}
-            - name: Show deployed URL
-              run: echo Evaluated environment url ${{ steps.deployment.outputs.page_url }}"
+              if: ${{ !cancelled() }}
