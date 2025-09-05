@@ -25,6 +25,14 @@
     color: white;
 }
 
+.App-list {
+    text-align: left;
+}
+
+.App img {
+    width: 50%;
+    height: 50%;
+}
 .App-link {
     color: #61dafb;
 }
