@@ -7,14 +7,14 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# GITHUB_TOKEN permissions
+# Required permissions for Pages v4 + artifact v4
 permissions:
-  actions: read        # required by deploy-pages@v4
+  actions: read        # NEW: required by deploy-pages@v4
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
+# Only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -22,6 +22,12 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    # Recommended for Pages so the URL shows on the run summary
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,11 +38,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "npm"
 
       - id: get-repo-values
         name: Get repository values
         run: |
-          url=https://$(echo "${{github.repository}}" | sed "s/\//.github.io\//")
+          url=https://$(echo "${{ github.repository }}" | sed "s/\//.github.io\//")
           echo "url=$url" >> $GITHUB_OUTPUT
 
       - name: Update package.json homepage
@@ -68,11 +75,11 @@ jobs:
         id: install
         run: |
           echo "<html><body><pre>" > ./dist/installation.html
-          npm install |& tee -a ./dist/installation.html
+          npm ci |& tee -a ./dist/installation.html
           echo "</pre></body></html>" >> ./dist/installation.html
           echo "* [Installation](../installation.html)" >> docs/quick-links.md
 
-      # Run linter
+      # Run linter (ensure your script writes dist/lint.html)
       - name: Run Linter
         id: lint
         run: |
@@ -94,7 +101,7 @@ jobs:
         id: test
         run: |
           echo "<html><body><pre>" > ./dist/tests.html
-          npm run test -- --coverage |& tee -a ./dist/tests.html
+          npm test -- --coverage |& tee -a ./dist/tests.html
           echo "</pre></body></html>" >> ./dist/tests.html
           echo "* [Tests](../tests.html)" >> docs/quick-links.md
 
@@ -131,16 +138,16 @@ jobs:
           src: docs
           dst: dist/docs/
 
-      # Deploy (updated to latest majors)
+      # Pages
       - name: Setup Pages
         if: ${{ !cancelled() }}
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload artifact (for Pages)
         if: ${{ !cancelled() }}
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/
+          path: "dist/"
 
       - name: Deploy to GitHub Pages
         if: ${{ !cancelled() }}
