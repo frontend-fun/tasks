@@ -15,7 +15,7 @@
 
 .App-header {
     width: 100%;
-    background-color: #282c34;
+    background-color: #6e0065;
     min-height: 40vh;
     display: flex;
     flex-direction: column;
@@ -25,8 +25,41 @@
     color: white;
 }
 
+.Second-header {
+    width: 100%;
+    background-color: #60bdff;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(0, 0, 0);
+}
+
 .App-link {
     color: #61dafb;
+}
+
+.tigerImg {
+    width: 50%;
+    height: 75%;
+}
+
+.col1Rect {
+    background-color: red;
+    width: auto;
+    height: 50px;
+}
+
+.col2Rect {
+    background-color: rgb(255, 0, 0);
+    width: auto;
+    height: 315px;
+}
+
+.xenoList {
+    text-align: left;
 }
 
 @keyframes App-logo-spin {
