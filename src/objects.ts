@@ -30,6 +30,11 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
+    if (
+        answer.toLowerCase().trim() === question.expected.toLowerCase().trim()
+    ) {
+        return true;
+    }
     return false;
 }
 
@@ -40,6 +45,12 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
+    if (question.type === "short_answer_question") {
+        return true;
+    }
+    if (question.type === "multiple_choice_question") {
+        return question.options.includes(answer);
+    }
     return false;
 }
 
@@ -50,7 +61,9 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    return "";
+    let combination: string = `${question.id}: ${question.name.slice(0, 10)}`;
+    console.log(combination);
+    return combination;
 }
 
 /**
