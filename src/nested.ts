@@ -54,23 +54,33 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    return questions.reduce((accumulated: string[], currentName: Question) => {
+        accumulated.push(currentName.name);
+        return accumulated;
+    }, []);
 }
 
 /***
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    return questions.reduce((sum: number, question: Question) => {
+        sum += question.points;
+        return sum;
+    }, 0);
 }
 
 /***
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    return 0;
+    return questions.reduce((sum: number, question: Question) => {
+        if (question.published) {
+            sum += question.points;
+        }
+        return sum;
+    }, 0);
 }
-
 /***
  * Consumes an array of questions, and produces a Comma-Separated Value (CSV) string representation.
  * A CSV is a type of file frequently used to share tabular data; we will use a single string
@@ -89,7 +99,18 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    const header = "id,name,options,points,published";
+    const list = questions
+        .map((question: Question) => [
+            question.id,
+            question.name,
+            question.options.length,
+            question.points,
+            question.published,
+        ])
+        .join("\n");
+    console.log([header, list].join("\n"));
+    return [header, list].join("\n");
 }
 
 /**
