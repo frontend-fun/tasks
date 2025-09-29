@@ -1,16 +1,45 @@
 import React from "react";
+import type { JSX } from "react";
 import "./App.css";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { StartAttempt } from "./components/StartAttempt";
+import { TwoDice } from "./components/TwoDice";
+import { CycleHoliday } from "./components/CycleHoliday";
+import { Counter } from "./components/Counter";
+import { DoubleHalf } from "./bad-components/DoubleHalf";
+import { ColoredBox } from "./bad-components/ColoredBox";
+import { ChooseTeam } from "./bad-components/ChooseTeam";
+import { ShoveBox } from "./bad-components/ShoveBox";
 
-function App(): React.JSX.Element {
+export function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript
+                <h1>CISC275</h1>
             </header>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
+            <hr />
+            <DoubleHalf />
+            <hr />
+            <ChooseTeam />
+            <hr />
+            <ColoredBox />
+            <hr />
+            <ShoveBox />
+            <hr />
+            <Counter />
+            <hr />
+            <Counter />
+            <hr />
+            <RevealAnswer />
+            <hr />
+            <ChangeType />
+            <hr />
+            <StartAttempt />
+            <hr />
+            <TwoDice />
+            <hr />
+            <CycleHoliday />
         </div>
     );
 }
