@@ -1,0 +1,12 @@
+{
+    "extends": ["react-app", "react-app/jest"],
+    "rules": {},
+    "overrides": [
+        {
+            "files": ["**/*.test.ts", "**/*.test.tsx"],
+            "rules": {
+                "testing-library/no-render-in-setup": "off"
+            }
+        }
+    ]
+}

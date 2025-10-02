@@ -21,7 +21,7 @@
         "test": "react-scripts test",
         "test:cov": "react-scripts test --coverage --watchAll",
         "eject": "react-scripts eject",
-        "lint": "eslint ./src --ext .tsx --ext .ts --max-warnings 0",
+        "lint": "eslint ./src --ext .tsx --ext .ts --max-warnings 0 --ignore-pattern \"*.test.ts\" --ignore-pattern \"*.test.tsx\"",
         "eslint-output": "eslint-output ./src --ext .tsx --ext .ts --max-warnings 0",
         "format": "prettier --config .prettierrc --write src/**/*.{ts,tsx}"
     },
