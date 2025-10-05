@@ -7,6 +7,10 @@ import { ChangeType } from "./components/ChangeType";
 import { StartAttempt } from "./components/StartAttempt";
 import { TwoDice } from "./components/TwoDice";
 import { CycleHoliday } from "./components/CycleHoliday";
+import { DoubleHalf } from "./bad-components/DoubleHalf";
+import { ChooseTeam } from "./bad-components/ChooseTeam";
+import { ColoredBox } from "./bad-components/ColoredBox";
+import { ShoveBox } from "./bad-components/ShoveBox";
 function App(): React.JSX.Element {
     return (
         <div style={{ border: "2px solid blue", padding: "2px" }}>
@@ -43,6 +47,18 @@ function App(): React.JSX.Element {
                     </div>
                     <div>
                         <CycleHoliday />
+                    </div>
+                    <div>
+                        <DoubleHalf />
+                    </div>
+                    <div>
+                        <ChooseTeam />
+                    </div>
+                    <div>
+                        <ColoredBox />
+                    </div>
+                    <div>
+                        <ShoveBox />
                     </div>
                     <p>Unordered List:</p>
                     <ul>
