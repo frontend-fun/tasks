@@ -52,7 +52,7 @@ function App(): React.JSX.Element {
                     </ul>
                     <img
                         src="https://tse4.mm.bing.net/th/id/OIP.tuJ0eQdPRyK_GsDAQ4B65AHaEK?pid=Api&P=0&h=220"
-                        alt="A picture of the Goat football ⚽ player"
+                        alt="A picture of the GOAT football ⚽ player"
                     />
                     <Container>
                         <Row>
