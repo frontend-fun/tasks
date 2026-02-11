@@ -37,3 +37,19 @@
         transform: rotate(360deg);
     }
 }
+
+/* Red rectangle used in columns */
+.red-box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+/* Optional: layout for the red boxes */
+.red-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
