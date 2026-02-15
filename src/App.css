@@ -37,3 +37,44 @@
         transform: rotate(360deg);
     }
 }
+
+.App-header h1 {
+    margin: 10px 0;
+    font-size: 2rem;
+}
+
+.App-header h2 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    text-align: left;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+button {
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+code {
+    background-color: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: "Courier New", monospace;
+}
