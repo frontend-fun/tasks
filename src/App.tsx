@@ -10,6 +10,10 @@ function App(): React.JSX.Element {
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
+
+                This page was created wonderfully by yours truly! Ikechukwu Ogbonnia.
+
+
             </p>
         </div>
     );
