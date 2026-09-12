@@ -130,6 +130,7 @@ export function injectPositive(values: number[]): number[] {
         valuesInside.push(total);
         return valuesInside;
     }
+
     valuesInside.splice(firstNegativeNumIndex + 1, 0, sum);
 
     return valuesInside;
