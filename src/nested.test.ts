@@ -76,7 +76,7 @@ describe("Testing the Question[] functions", () => {
     //////////////////////////////////
     // getPublishedQuestions
 
-    test("(3 pts) Testing the getPublishedQuestions function", () => {
+    test("Testing the getPublishedQuestions function", () => {
         expect(getPublishedQuestions(BLANK_QUESTIONS)).toEqual([]);
         expect(getPublishedQuestions(SIMPLE_QUESTIONS)).toEqual([
             {
@@ -148,7 +148,7 @@ describe("Testing the Question[] functions", () => {
         ]);
     });
 
-    test("(3 pts) Testing the getNonEmptyQuestions functions", () => {
+    test("Testing the getNonEmptyQuestions functions", () => {
         expect(getNonEmptyQuestions(BLANK_QUESTIONS)).toEqual([]);
         expect(getNonEmptyQuestions(SIMPLE_QUESTIONS)).toEqual(
             BACKUP_SIMPLE_QUESTIONS,
@@ -203,7 +203,7 @@ describe("Testing the Question[] functions", () => {
         ]);
     });
 
-    test("(3 pts) Testing the findQuestion function", () => {
+    test("Testing the findQuestion function", () => {
         expect(findQuestion(BLANK_QUESTIONS, 1)).toEqual(BLANK_QUESTIONS[0]);
         expect(findQuestion(BLANK_QUESTIONS, 47)).toEqual(BLANK_QUESTIONS[1]);
         expect(findQuestion(BLANK_QUESTIONS, 2)).toEqual(BLANK_QUESTIONS[2]);
@@ -219,7 +219,7 @@ describe("Testing the Question[] functions", () => {
         expect(findQuestion([], 0)).toEqual(null);
     });
 
-    test("(3 pts) Testing the removeQuestion", () => {
+    test("Testing the removeQuestion", () => {
         expect(removeQuestion(BLANK_QUESTIONS, 1)).toEqual([
             {
                 id: 47,
@@ -352,7 +352,7 @@ describe("Testing the Question[] functions", () => {
         ]);
     });
 
-    test("(3 pts) Testing the getNames function", () => {
+    test("Testing the getNames function", () => {
         expect(getNames(BLANK_QUESTIONS)).toEqual([
             "Question 1",
             "My New Question",
@@ -385,7 +385,7 @@ describe("Testing the Question[] functions", () => {
         ]);
     });
 
-    test("(3 pts) Testing the sumPoints function", () => {
+    test("Testing the sumPoints function", () => {
         expect(sumPoints(BLANK_QUESTIONS)).toEqual(3);
         expect(sumPoints(SIMPLE_QUESTIONS)).toEqual(5);
         expect(sumPoints(TRIVIA_QUESTIONS)).toEqual(20);
@@ -393,7 +393,7 @@ describe("Testing the Question[] functions", () => {
         expect(sumPoints(SIMPLE_QUESTIONS_2)).toEqual(300);
     });
 
-    test("(3 pts) Testing the sumPublishedPoints function", () => {
+    test("Testing the sumPublishedPoints function", () => {
         expect(sumPublishedPoints(BLANK_QUESTIONS)).toEqual(0);
         expect(sumPublishedPoints(SIMPLE_QUESTIONS)).toEqual(2);
         expect(sumPublishedPoints(TRIVIA_QUESTIONS)).toEqual(0);
@@ -401,7 +401,7 @@ describe("Testing the Question[] functions", () => {
         expect(sumPublishedPoints(SIMPLE_QUESTIONS_2)).toEqual(300);
     });
 
-    test("(3 pts) Testing the toCSV function", () => {
+    test("Testing the toCSV function", () => {
         expect(toCSV(BLANK_QUESTIONS)).toEqual(`id,name,options,points,published
 1,Question 1,0,1,false
 47,My New Question,0,1,false
@@ -432,7 +432,7 @@ describe("Testing the Question[] functions", () => {
 1937,Listening,0,100,true`);
     });
 
-    test("(3 pts) Testing the makeAnswers function", () => {
+    test("Testing the makeAnswers function", () => {
         expect(makeAnswers(BLANK_QUESTIONS)).toEqual([
             { questionId: 1, correct: false, text: "", submitted: false },
             { questionId: 47, correct: false, text: "", submitted: false },
@@ -465,7 +465,7 @@ describe("Testing the Question[] functions", () => {
         ]);
     });
 
-    test("(3 pts) Testing the publishAll function", () => {
+    test("Testing the publishAll function", () => {
         expect(publishAll(BLANK_QUESTIONS)).toEqual([
             {
                 id: 1,
@@ -635,7 +635,7 @@ describe("Testing the Question[] functions", () => {
         expect(publishAll(SIMPLE_QUESTIONS_2)).toEqual(SIMPLE_QUESTIONS_2);
     });
 
-    test("(3 pts) Testing the sameType function", () => {
+    test("Testing the sameType function", () => {
         expect(sameType([])).toEqual(true);
         expect(sameType(BLANK_QUESTIONS)).toEqual(false);
         expect(sameType(SIMPLE_QUESTIONS)).toEqual(false);
@@ -644,7 +644,7 @@ describe("Testing the Question[] functions", () => {
         expect(sameType(SIMPLE_QUESTIONS_2)).toEqual(true);
     });
 
-    test("(3 pts) Testing the addNewQuestion function", () => {
+    test("Testing the addNewQuestion function", () => {
         expect(
             addNewQuestion([], 142, "A new question", "short_answer_question"),
         ).toEqual([NEW_BLANK_QUESTION]);
@@ -666,7 +666,7 @@ describe("Testing the Question[] functions", () => {
         ).toEqual([...TRIVIA_QUESTIONS, NEW_TRIVIA_QUESTION]);
     });
 
-    test("(3 pts) Testing the renameQuestionById function", () => {
+    test("Testing the renameQuestionById function", () => {
         expect(renameQuestionById(BLANK_QUESTIONS, 1, "New Name")).toEqual([
             {
                 id: 1,
@@ -777,7 +777,7 @@ describe("Testing the Question[] functions", () => {
         ]);
     });
 
-    test("(3 pts) Test the changeQuestionTypeById function", () => {
+    test("Test the changeQuestionTypeById function", () => {
         expect(
             changeQuestionTypeById(
                 BLANK_QUESTIONS,
@@ -901,7 +901,7 @@ describe("Testing the Question[] functions", () => {
         ]);
     });
 
-    test("(3 pts) Testing the editOption function", () => {
+    test("Testing the addEditQuestionOption function", () => {
         expect(editOption(BLANK_QUESTIONS, 1, -1, "NEW OPTION")).toEqual([
             {
                 id: 1,
@@ -1095,7 +1095,7 @@ describe("Testing the Question[] functions", () => {
         ]);
     });
 
-    test("(3 pts) Testing the duplicateQuestionInArray function", () => {
+    test("Testing the duplicateQuestionInArray function", () => {
         expect(duplicateQuestionInArray(BLANK_QUESTIONS, 1, 27)).toEqual([
             {
                 id: 1,
