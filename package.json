@@ -20,10 +20,13 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "test:cov": "react-scripts test --coverage --watchAll",
+        "test:json": "react-scripts test --json --watchAll=false --outputFile jest-output.json --coverage",
         "eject": "react-scripts eject",
         "lint": "eslint ./src --ext .tsx --ext .ts --max-warnings 0",
         "eslint-output": "eslint-output ./src --ext .tsx --ext .ts --max-warnings 0",
-        "format": "prettier --config .prettierrc --write src/**/*.{ts,tsx}"
+        "format": "prettier --config .prettierrc --write src/**/*.{ts,tsx}",
+        "typecheck": "tsc --noEmit",
+        "check": "npm run typecheck && npm run lint && npm run format && npm run test -- --watchAll=false --coverage"
     },
     "eslintConfig": {
         "extends": [
